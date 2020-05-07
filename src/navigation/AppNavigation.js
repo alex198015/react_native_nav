@@ -1,16 +1,19 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { MainScreen } from './../screens/MainScreen';
 import { PostScreen } from './../screens/PostScreen';
 import { THEME } from './../theme';
 import { Platform } from 'react-native';
+import { Ionicons } from '@expo/vector-icons'
+import { BookedScreen } from './../screens/BookedScreen';
+
 
 const Stack = createStackNavigator()
 
-export function RootStack() {
+function RootStack (){
     return (
-        <NavigationContainer>
             <Stack.Navigator
                 initialRouteName="Main"
                 screenOptions={{
@@ -24,7 +27,7 @@ export function RootStack() {
                 <Stack.Screen
                     name="Main"
                     component={MainScreen}
-                  options={{title: 'Мой блок'}}
+                    options={{title: 'Мой блок'}}
                 />
                 <Stack.Screen
                     name="Post"
@@ -36,9 +39,51 @@ export function RootStack() {
                                 headerTintColor: '#fff'}}
                     initialParams={{ user: 'post' }}
                 />
+
             </Stack.Navigator>
-        </NavigationContainer>
     );
 }
 
+
+const Tab = createBottomTabNavigator()
+
+function MyTabs() {
+    
+  return (
+    <NavigationContainer>
+    <Tab.Navigator
+        initialRouteName="Booked"
+        tabBarOptions={{
+        activeTintColor: THEME.MAIN_COLOR
+      }}
+    >
+      <Tab.Screen 
+            name="Booked" 
+            component={BookedScreen}
+            options={{
+                tabBarLabel: 'Booked',
+                tabBarIcon: () => (
+                  <Ionicons name="ios-star" size={25} color={'red'}/>
+                )
+            }}
+            />
+      <Tab.Screen 
+            name="Post" 
+            component={RootStack} 
+            options={{
+                tabBarLabel: 'Post',
+                tabBarIcon: () => (
+                  <Ionicons name="ios-albums" size={25} color={'green'}/>
+                )
+            }}
+            />
+    </Tab.Navigator>
+    </NavigationContainer>
+  )
+}
+
+export function AppNavigation(){ 
+    
+   return <MyTabs/>
+}
 
