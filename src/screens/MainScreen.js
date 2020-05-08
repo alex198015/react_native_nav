@@ -1,10 +1,10 @@
-import React,{useLayoutEffect} from 'react'
-import { DATA } from './../data';
+import React,{useLayoutEffect, useEffect} from 'react'
 import {AppHeaderIcon} from './../components/AppHeaderIcon'
 import {HeaderButtons, Item} from 'react-navigation-header-buttons'
 import { PostList } from './../components/PostList';
 import { DrawerActions } from '@react-navigation/native'
-
+import {useDispatch, useSelector} from 'react-redux'
+import { loadPosts } from './../store/actions/post';
 
 export const MainScreen = ({navigation}) => {
     
@@ -24,6 +24,11 @@ useLayoutEffect(() => {
     })
 },[navigation])
 
+const dispatch = useDispatch()
+
+useEffect(() => {
+    dispatch(loadPosts())
+},[dispatch])
 
 const openPostHandler = (post) => {
 
@@ -31,7 +36,9 @@ const openPostHandler = (post) => {
 
 }
 
-return <PostList data={DATA} onOpen={openPostHandler}/>
+const allPosts = useSelector(state => state.post.allPosts)
+
+return <PostList data={allPosts} onOpen={openPostHandler}/>
 
 }
 

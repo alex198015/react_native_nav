@@ -1,10 +1,12 @@
-import React,{useLayoutEffect} from 'react'
-import { DATA } from './../data';
+import React,{useLayoutEffect,useEffect} from 'react'
 import { AppHeaderIcon } from './../components/AppHeaderIcon';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { PostList } from './../components/PostList';
 import { DrawerActions } from '@react-navigation/native'
 import { View } from 'react-native';
+import {useSelector}  from 'react-redux';
+import { loadPosts } from './../store/actions/post';
+
 
 export const BookedScreen = ({navigation}) => {
     <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
@@ -23,17 +25,18 @@ export const BookedScreen = ({navigation}) => {
     },[navigation])
 
 
+const bookedPosts = useSelector(state => state.post.bookedPosts)
+
 const openPostHandler = (post) => {
 
     navigation.navigate('Post', {postId: post.id, date:post.date, booked: post.booked})
 
 }
 
-const data = DATA.filter(post => post.booked)
 
 return (
     <View>
-    <PostList data={data} onOpen={openPostHandler}/>
+    <PostList data={bookedPosts} onOpen={openPostHandler}/>
 </View>
 )
 }
