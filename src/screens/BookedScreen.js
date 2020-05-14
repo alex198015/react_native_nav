@@ -1,11 +1,10 @@
-import React,{useLayoutEffect,useEffect} from 'react'
+import React,{useLayoutEffect} from 'react'
 import { AppHeaderIcon } from './../components/AppHeaderIcon';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { PostList } from './../components/PostList';
 import { DrawerActions } from '@react-navigation/native'
 import { View } from 'react-native';
 import {useSelector}  from 'react-redux';
-import { loadPosts } from './../store/actions/post';
 
 
 export const BookedScreen = ({navigation}) => {

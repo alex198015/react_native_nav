@@ -5,6 +5,7 @@ import { PostList } from './../components/PostList';
 import { DrawerActions } from '@react-navigation/native'
 import {useDispatch, useSelector} from 'react-redux'
 import { loadPosts } from './../store/actions/post';
+import { View, StyleSheet, ActivityIndicator } from 'react-native';
 
 export const MainScreen = ({navigation}) => {
     
@@ -37,8 +38,22 @@ const openPostHandler = (post) => {
 }
 
 const allPosts = useSelector(state => state.post.allPosts)
+const loading = useSelector(state => state.post.loading)
+
+if(loading){
+    return <View style={styles.center}>
+        <ActivityIndicator size="large" color="blue"/>
+    </View>
+}
 
 return <PostList data={allPosts} onOpen={openPostHandler}/>
 
 }
 
+const styles = StyleSheet.create({
+    center:{
+        flex:1,
+        justifyContent:'center',
+        alignItems:'center'
+    }
+})
