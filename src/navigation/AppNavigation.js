@@ -93,7 +93,7 @@ function RootStack() {
       <Stack.Screen
         name="Main"
         component={MainScreen}
-        options={{ title: 'Мой блок' }}
+        options={{ title: 'Мой блок!' }}
       />
       <Stack.Screen
         name="Post"

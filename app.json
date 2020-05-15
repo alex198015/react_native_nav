@@ -2,18 +2,18 @@
   "expo": {
     "name": "navig_project",
     "slug": "navig_project",
+    "privacy": "public",
     "platforms": [
       "ios",
-      "android",
-      "web"
+      "android" 
     ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover",
+      "backgroundColor": "#242832"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,7 +22,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.test1.navigproject",
+      "buildNumber": "1.0.0"
+    },
+    "android":{
+      "package": "com.test1.navigproject",
+      "versionCode": 1,
+      "permissions":[
+        "CAMERA",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
     }
   }
 }
