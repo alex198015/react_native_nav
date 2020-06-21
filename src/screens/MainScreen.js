@@ -2,7 +2,7 @@ import React,{useLayoutEffect, useEffect} from 'react'
 import {AppHeaderIcon} from './../components/AppHeaderIcon'
 import {HeaderButtons, Item} from 'react-navigation-header-buttons'
 import { PostList } from './../components/PostList';
-import { DrawerActions } from '@react-navigation/native'
+import { DrawerActions, StackActions  } from '@react-navigation/native'
 import {useDispatch, useSelector} from 'react-redux'
 import { loadPosts } from './../store/actions/post';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
@@ -12,9 +12,10 @@ export const MainScreen = ({navigation}) => {
 
 useLayoutEffect(() => {
     navigation.setOptions({
+        // title: 'Мой блок!'
         headerRight: () => (
             <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-                <Item title="Take photo" iconName="ios-camera" onPress={() => navigation.navigate('Create')}/>          
+                <Item title="Take photo" iconName="ios-camera" onPress={() => navigation.dispatch(StackActions.push('Create'))}/>          
             </HeaderButtons>
         ),
         headerLeft: () => (

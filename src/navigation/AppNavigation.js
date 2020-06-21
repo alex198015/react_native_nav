@@ -28,6 +28,7 @@ const Booked = createStackNavigator()
 function BookedStack() {
   return (
     <Booked.Navigator
+    
       screenOptions={{ ...navigatorOptions }}
     // screenOptions={{ gestureEnabled: false }}
     >
@@ -107,7 +108,10 @@ function RootStack() {
         }}
         initialParams={{ user: 'post' }}
       />
-
+      <Stack.Screen
+        name="Create"
+        component={CreateScreen}
+      />
     </Stack.Navigator>
   );
 }

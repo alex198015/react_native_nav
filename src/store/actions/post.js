@@ -21,6 +21,7 @@ export const removePost = (id) => async dispatch => {
 }
 export const addPost = (post) => async dispatch => {
 
+
     const fileName = post.img.split('/').pop()
     const newPath = FileSystem.documentDirectory + fileName
     
@@ -38,7 +39,7 @@ export const addPost = (post) => async dispatch => {
 
     payload.id = id
     
-    post.id = Date.now().toString()
+    
     dispatch({
         type: ADD_POST, 
         payload

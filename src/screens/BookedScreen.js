@@ -8,9 +8,9 @@ import {useSelector}  from 'react-redux';
 
 
 export const BookedScreen = ({navigation}) => {
-    <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-                    <Item title="Toggle Drawer" iconName="ios-menu" onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}/>          
-                </HeaderButtons>
+    // <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+    //                 <Item title="Toggle Drawer" iconName="ios-menu" onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}/>          
+    //             </HeaderButtons>
 
     useLayoutEffect(() => {
         navigation.setOptions({

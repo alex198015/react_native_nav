@@ -34,7 +34,12 @@ const imgRef = useRef()
                 <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
                     <Item title="Toggle Drawer" iconName="ios-menu" onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())} />
                 </HeaderButtons>
-            )
+            ),
+            headerRight: () => (
+                <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+                    <Item title="Go back" iconName="md-arrow-back" onPress={() => navigation.goBack()}/>          
+                </HeaderButtons>
+            ),
         })
     }, [navigation])
 

@@ -78,6 +78,7 @@ const iconName = booked ? 'ios-star' : 'ios-star-outline'
 
 
 
+
 const styles = StyleSheet.create({
     img:{
         width: '100%',
